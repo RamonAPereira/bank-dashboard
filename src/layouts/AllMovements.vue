@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import MovementCard from "../components/MovementCard.vue";
 import { useAccounts } from "../stores/accounts";
-const currentAccount = ref(useAccounts().accounts.account1);
+const currentAccount = ref(useAccounts().accounts[0]);
 </script>
 <template>
   <ul class="rounded border bg-neutral-50 flex-1">

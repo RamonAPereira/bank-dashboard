@@ -1,6 +1,7 @@
 <script setup>
 import CurrentBalance from "../layouts/CurrentBalance.vue";
 import AllMovements from "../layouts/AllMovements.vue";
+import TheSummary from "../layouts/TheSummary.vue";
 </script>
 
 <template>
@@ -11,5 +12,6 @@ import AllMovements from "../layouts/AllMovements.vue";
       <AllMovements />
       <ul class="flex-1"></ul>
     </div>
+    <TheSummary />
   </section>
 </template>
