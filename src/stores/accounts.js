@@ -34,4 +34,9 @@ export const useAccounts = defineStore("main", {
       },
     };
   },
+  actions: {
+    createUsername() {
+      console.log("x");
+    },
+  },
 });
