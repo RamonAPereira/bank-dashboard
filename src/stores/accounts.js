@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import router from "../router/router";
 
 export const useAccounts = defineStore("main", {
   state: () => {
@@ -61,6 +62,19 @@ export const useAccounts = defineStore("main", {
         //Doing the transfer
         to.movements.push(transfer);
         this.accounts[this.currentUser].movements.push(-transfer);
+      }
+    },
+    closeAccount(closeThis) {
+      console.log("Close account");
+      const currentAccount = this.accounts[this.currentUser];
+      if (
+        currentAccount.username === closeThis.username &&
+        currentAccount.pin === closeThis.pin
+      ) {
+        // Delete Account
+        this.accounts.splice(currentAccount, 1);
+        //send user back to login
+        router.push("./");
       }
     },
   },
