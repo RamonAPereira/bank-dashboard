@@ -43,6 +43,11 @@ export const useAccounts = defineStore("main", {
         .filter((mov) => mov > 0)
         .reduce((acc, mov) => acc + mov, 0);
     },
+    allMovements: (state) => {
+      return state.accounts
+        .flatMap((acc) => acc.movements)
+        .reduce(acc, (mov) => acc + mov, 0);
+    }, // manager can see all movements in all accounts
   },
   actions: {
     setCurrentUser(index) {
