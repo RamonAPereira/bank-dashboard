@@ -3,11 +3,7 @@ import { computed, ref } from "@vue/reactivity";
 import { useAccounts } from "../stores/accounts";
 const currentAccount = ref(useAccounts().accounts[useAccounts().currentUser]);
 
-const incomes = computed(() => {
-  return currentAccount.value.movements
-    .filter((mov) => mov > 0)
-    .reduce((acc, mov) => acc + mov, 0);
-});
+const incomes = useAccounts().incomes;
 const outcomes = computed(() => {
   return Math.abs(
     currentAccount.value.movements
@@ -18,7 +14,7 @@ const outcomes = computed(() => {
 const interest = computed(() => {
   return currentAccount.value.movements
     .filter((mov) => mov > 0)
-    .map((mov) => (mov * currentAccount.value.movements) / 100)
+    .map((mov) => (mov * currentAccount.value.interestRate) / 100)
     .filter((mov, _, arr) => {
       return mov >= 1;
     })

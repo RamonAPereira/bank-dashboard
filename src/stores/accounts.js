@@ -33,12 +33,35 @@ export const useAccounts = defineStore("main", {
           pin: 4444,
         },
       ],
-      currentUser: null,
+      currentUser: 0,
     };
+  },
+  getters: {
+    incomes: (state) => {
+      return state.accounts[state.currentUser].movements
+        .filter((mov) => mov > 0)
+        .reduce((acc, mov) => acc + mov, 0);
+    },
   },
   actions: {
     setCurrentUser(index) {
       this.currentUser = index;
+    },
+    transferMoneyTo(transferInfo) {
+      const transfer = transferInfo.amount;
+      const to = this.accounts.find((acc) => acc.username === transferInfo.to);
+      console.log(transferInfo);
+
+      if (
+        to &&
+        transfer > 0 &&
+        this.incomes >= transfer &&
+        to !== this.accounts[this.currentUser]
+      ) {
+        //Doing the transfer
+        to.movements.push(transfer);
+        this.accounts[this.currentUser].movements.push(-transfer);
+      }
     },
   },
 });

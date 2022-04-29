@@ -2,6 +2,7 @@
 import CurrentBalance from "../layouts/CurrentBalance.vue";
 import AllMovements from "../layouts/AllMovements.vue";
 import TheSummary from "../layouts/TheSummary.vue";
+import NewMovement from "../layouts/NewMovement.vue";
 </script>
 
 <template>
@@ -10,7 +11,7 @@ import TheSummary from "../layouts/TheSummary.vue";
 
     <div class="flex px-16 my-8">
       <AllMovements />
-      <ul class="flex-1"></ul>
+      <NewMovement />
     </div>
     <TheSummary />
   </section>
