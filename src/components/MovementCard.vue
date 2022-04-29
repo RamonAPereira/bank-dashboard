@@ -21,7 +21,9 @@ const colorOfMovement = computed(() => {
 });
 </script>
 <template>
-  <div class="flex justify-between items-center h-24 px-6 border-b">
+  <div
+    class="flex justify-between items-center h-24 px-6 border-b border-neutral-900"
+  >
     <h3 class="uppercase flex gap-4 items-center">
       <span
         class="rounded-xl text-neutral-50 px-1 py-1 text-center text-sm"

@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref } from "@vue/reactivity";
 import { useAccounts } from "../stores/accounts";
-const currentAccount = ref(useAccounts().accounts[0]);
+const currentAccount = ref(useAccounts().accounts[useAccounts().currentUser]);
 
 const incomes = computed(() => {
   return currentAccount.value.movements
@@ -18,7 +18,7 @@ const outcomes = computed(() => {
 const interest = computed(() => {
   return currentAccount.value.movements
     .filter((mov) => mov > 0)
-    .map((mov) => (mov * 1.2) / 100)
+    .map((mov) => (mov * currentAccount.value.movements) / 100)
     .filter((mov, _, arr) => {
       return mov >= 1;
     })
@@ -27,7 +27,9 @@ const interest = computed(() => {
 </script>
 
 <template>
-  <footer class="flex justify-between items-center px-16 py-6">
+  <footer
+    class="flex justify-between items-center px-16 py-6 text-neutral-50 bg-neutral-900"
+  >
     <ul class="flex uppercase gap-4">
       <li class="flex items-center gap-1">
         In <span class="text-green-600 text-2xl">{{ incomes }}$</span>

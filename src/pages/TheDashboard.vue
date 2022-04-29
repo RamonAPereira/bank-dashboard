@@ -8,7 +8,7 @@ import TheSummary from "../layouts/TheSummary.vue";
   <section>
     <CurrentBalance />
 
-    <div class="flex px-16">
+    <div class="flex px-16 my-8">
       <AllMovements />
       <ul class="flex-1"></ul>
     </div>

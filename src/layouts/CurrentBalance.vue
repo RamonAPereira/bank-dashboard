@@ -2,7 +2,7 @@
 import { computed } from "@vue/reactivity";
 import { ref } from "vue";
 import { useAccounts } from "../stores/accounts";
-const currentAccount = ref(useAccounts().accounts[0]);
+const currentAccount = ref(useAccounts().accounts[useAccounts().currentUser]);
 
 const balance = computed(() => {
   return currentAccount.value.movements.reduce((acc, mov) => acc + mov, 0);
@@ -10,7 +10,7 @@ const balance = computed(() => {
 </script>
 
 <template>
-  <div class="flex items-center justify-between py-6 px-16">
+  <div class="flex items-center justify-between py-6 px-16 text-neutral-50">
     <div>
       <h2 class="font-bold text-xl">Current balance</h2>
       <span class="opacity-70">As of 05/03/2037</span>
