@@ -61,11 +61,21 @@ export const useAccounts = defineStore("main", {
       ) {
         //Doing the transfer
         to.movements.push(transfer);
-        this.accounts[this.currentUser].movements.push(-transfer);
+        this.accounts[this.currentUser].movements.unshift(-transfer);
+      }
+    },
+    concedeLoan(amount) {
+      const currentAccount = this.accounts[this.currentUser];
+      if (
+        amount > 0 &&
+        currentAccount.movements.some((mov) => mov >= amount * 0.1)
+      ) {
+        //concede loan
+        currentAccount.movements.unshift(amount);
+        console.log(currentAccount.movements);
       }
     },
     closeAccount(closeThis) {
-      console.log("Close account");
       const currentAccount = this.accounts[this.currentUser];
       if (
         currentAccount.username === closeThis.username &&
