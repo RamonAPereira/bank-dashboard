@@ -26,7 +26,7 @@ const interest = computed(() => {
   <footer
     class="flex justify-between items-center px-16 py-6 text-neutral-50 bg-neutral-900"
   >
-    <ul class="flex uppercase gap-4">
+    <ul class="flex uppercase gap-4 justify-end items-baseline">
       <li class="flex items-center gap-1">
         In <span class="text-green-600 text-2xl">{{ incomes }}$</span>
       </li>

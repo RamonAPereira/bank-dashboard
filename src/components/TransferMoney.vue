@@ -7,7 +7,7 @@ const accounts = ref(useAccounts());
 </script>
 
 <template>
-  <div class="bg-yellow-400 p-8 mx-8 rounded-lg flex flex-col gap-4">
+  <div class="bg-indigo-500 p-8 mx-8 rounded-lg flex flex-col gap-4">
     <h2 class="font-bold">Transfer Money</h2>
     <form class="flex justify-start items-start gap-4" @click.prevent="">
       <div class="form__control">
